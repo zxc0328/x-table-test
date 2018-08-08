@@ -2018,26 +2018,24 @@
             key: "handleScrollEvent",
             value: function(_ref2) {
                 var _ref2$scrollLeft = _ref2.scrollLeft, scrollLeftParam = void 0 === _ref2$scrollLeft ? 0 : _ref2$scrollLeft, _ref2$scrollTop = _ref2.scrollTop, scrollTopParam = void 0 === _ref2$scrollTop ? 0 : _ref2$scrollTop;
-                if (!(scrollTopParam < 0)) {
-                    this._debounceScrollEnded();
-                    var _props = this.props, autoHeight = _props.autoHeight, autoWidth = _props.autoWidth, height = _props.height, width = _props.width, instanceProps = this.state.instanceProps, scrollbarSize$$1 = instanceProps.scrollbarSize, totalRowsHeight = instanceProps.rowSizeAndPositionManager.getTotalSize(), totalColumnsWidth = instanceProps.columnSizeAndPositionManager.getTotalSize(), scrollLeft = Math.min(Math.max(0, totalColumnsWidth - width + scrollbarSize$$1), scrollLeftParam), scrollTop = Math.min(Math.max(0, totalRowsHeight - height + scrollbarSize$$1), scrollTopParam);
-                    if (this.state.scrollLeft !== scrollLeft || this.state.scrollTop !== scrollTop) {
-                        var newState = {
-                            isScrolling: !0,
-                            scrollDirectionHorizontal: scrollLeft !== this.state.scrollLeft ? scrollLeft > this.state.scrollLeft ? SCROLL_DIRECTION_FORWARD : -1 : this.state.scrollDirectionHorizontal,
-                            scrollDirectionVertical: scrollTop !== this.state.scrollTop ? scrollTop > this.state.scrollTop ? SCROLL_DIRECTION_FORWARD : -1 : this.state.scrollDirectionVertical,
-                            scrollPositionChangeReason: SCROLL_POSITION_CHANGE_REASONS$__OBSERVED
-                        };
-                        autoHeight || (newState.scrollTop = scrollTop), autoWidth || (newState.scrollLeft = scrollLeft), 
-                        newState.needToResetStyleCache = !1, this.setState(newState);
-                    }
-                    this._invokeOnScrollMemoizer({
-                        scrollLeft: scrollLeft,
-                        scrollTop: scrollTop,
-                        totalColumnsWidth: totalColumnsWidth,
-                        totalRowsHeight: totalRowsHeight
-                    });
+                this._debounceScrollEnded();
+                var _props = this.props, autoHeight = _props.autoHeight, autoWidth = _props.autoWidth, height = _props.height, width = _props.width, instanceProps = this.state.instanceProps, scrollbarSize$$1 = instanceProps.scrollbarSize, totalRowsHeight = instanceProps.rowSizeAndPositionManager.getTotalSize(), totalColumnsWidth = instanceProps.columnSizeAndPositionManager.getTotalSize(), scrollLeft = Math.min(Math.max(0, totalColumnsWidth - width + scrollbarSize$$1), scrollLeftParam), scrollTop = Math.min(Math.max(0, totalRowsHeight - height + scrollbarSize$$1), scrollTopParam);
+                if (this.state.scrollLeft !== scrollLeft || this.state.scrollTop !== scrollTop) {
+                    var newState = {
+                        isScrolling: !0,
+                        scrollDirectionHorizontal: scrollLeft !== this.state.scrollLeft ? scrollLeft > this.state.scrollLeft ? SCROLL_DIRECTION_FORWARD : -1 : this.state.scrollDirectionHorizontal,
+                        scrollDirectionVertical: scrollTop !== this.state.scrollTop ? scrollTop > this.state.scrollTop ? SCROLL_DIRECTION_FORWARD : -1 : this.state.scrollDirectionVertical,
+                        scrollPositionChangeReason: SCROLL_POSITION_CHANGE_REASONS$__OBSERVED
+                    };
+                    autoHeight || (newState.scrollTop = scrollTop), autoWidth || (newState.scrollLeft = scrollLeft), 
+                    newState.needToResetStyleCache = !1, this.setState(newState);
                 }
+                this._invokeOnScrollMemoizer({
+                    scrollLeft: scrollLeft,
+                    scrollTop: scrollTop,
+                    totalColumnsWidth: totalColumnsWidth,
+                    totalRowsHeight: totalRowsHeight
+                });
             }
         }, {
             key: "invalidateCellSizeAfterRender",
