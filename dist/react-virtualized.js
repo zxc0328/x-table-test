@@ -1950,7 +1950,7 @@
             }, _this._setScrollingContainerRef = function(ref) {
                 _this._scrollingContainer = ref;
             }, _this._onScroll = function(event) {
-                event.target === _this._scrollingContainer ? _this.handleScrollEvent(event.target) : console.log("target not right");
+                console.log(event), event.target === _this._scrollingContainer ? _this.handleScrollEvent(event.target) : console.log("target not right");
             };
             var columnSizeAndPositionManager = new ScalingCellSizeAndPositionManager({
                 cellCount: props.columnCount,
